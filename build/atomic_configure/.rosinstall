@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/nano/ros_car/devel/setup.sh

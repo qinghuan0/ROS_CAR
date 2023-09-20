@@ -1,0 +1,4 @@
+<launch>
+    <node name="robot_twist_keyboard" pkg="robot_ctrl" type="robot_twist_keyboard.py" output="screen" respawn="false" />
+
+</launch>

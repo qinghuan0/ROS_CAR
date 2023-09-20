@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/nano/ros_car/devel/include/**",
+        "/home/nano/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/nano/ros_car/src/ros_astra_camera/include/**",
+        "/home/nano/ros_car/src/third_packages/frontier_exploration/exploration_server/include/**",
+        "/home/nano/ros_car/src/third_packages/frontier_exploration/frontier_exploration/include/**",
+        "/home/nano/ros_car/src/third_packages/camera_umd/jpeg_streamer/include/**",
+        "/home/nano/ros_car/src/third_packages/frontier_exploration/polygon_layer/include/**",
+        "/home/nano/ros_car/src/robot_driver/include/**",
+        "/home/nano/ros_car/src/third_packages/camera_umd/uvc_camera/include/**",
+        "/home/nano/ros_car/src/third_packages/world_canvas/world_canvas_libs/world_canvas_client_cpp/include/**",
+        "/home/nano/catkin_ws/src/yolov5-tensorrt/yolov5/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-arm64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

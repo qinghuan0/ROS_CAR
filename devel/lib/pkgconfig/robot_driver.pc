@@ -1,0 +1,8 @@
+prefix=/home/nano/ros_car/devel
+
+Name: robot_driver
+Description: Description of robot_driver
+Version: 0.0.0
+Cflags: -I/home/nano/ros_car/devel/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy
