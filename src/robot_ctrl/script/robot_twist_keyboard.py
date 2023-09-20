@@ -101,8 +101,12 @@ if __name__=="__main__":
                 z = moveBindings[key][2]
                 th = moveBindings[key][3]
                 twist = Twist()
-                twist.linear.x = x*speed; twist.linear.y = y*speed; twist.linear.z = z*speed;
-                twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = th*turn
+                twist.linear.x = x*speed
+                twist.linear.y = y*speed 
+                twist.linear.z = z*speed
+                twist.angular.x = 0 
+                twist.angular.y = 0 
+                twist.angular.z = th*turn
                 pub.publish(twist)
             elif key in speedBindings.keys():
                 speed = speed * speedBindings[key][0]

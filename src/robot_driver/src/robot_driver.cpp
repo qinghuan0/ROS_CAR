@@ -97,7 +97,6 @@ void RobotDriver::main_loop()
 	    f = boost::bind(&RobotDriver::dynamic_reconfig_callback,this,_1,_2);//绑定回调对象
 	    reconfig_server.setCallback(f);//给动态参数对象配置回调函数
         
-        
         ROS_INFO("Robot Running!");
         //循环阻塞等待
         ros::spin();
@@ -138,7 +137,8 @@ void RobotDriver::send_speed_callback(const ros::TimerEvent&)
     {
             linear_x_speed = current_twist_.linear.x;
             linear_y_speed = current_twist_.linear.y;
-            angular_speed = current_twist_.angular.z;
+            angular_speed =  current_twist_.angular.z;
+            // ROS_INFO("x=%.3f,y=%.3f,yaw=%.3f",linear_x_speed,linear_y_speed,angular_speed);
     }
     else
     {
@@ -154,7 +154,7 @@ void RobotDriver::send_speed_callback(const ros::TimerEvent&)
     SetVelocity(linear_x_speed,linear_y_speed,angular_speed);
 }
 
-/*cmd_vel Subscriber的回调函数，当cmd_vle话题有信息时会触发该回调函数*/
+/*cmd_vel Subscriber的回调函数，当cmd_vel话题有信息时会触发该回调函数*/
 void RobotDriver::cmd_vel_callback(const geometry_msgs::Twist::ConstPtr& msg)
 {
     try
@@ -407,14 +407,15 @@ void RobotDriver::SetVelocity(double x, double y, double yaw)
     vel_data[1] = head2;
     vel_data[2] = 0x0b;
     vel_data[3] = sendType_velocity;
-    vel_data[4] = ((int16_t)(1000*1000)>>8) & 0xff;
-    vel_data[5] = ((int16_t)(1000*1000)) & 0xff;
+    vel_data[4] = ((int16_t)(x*1000)>>8) & 0xff;
+    vel_data[5] = ((int16_t)(x*1000)) & 0xff;
     vel_data[6] = ((int16_t)(y*1000)>>8) & 0xff;
     vel_data[7] = ((int16_t)(y*1000)) & 0xff;
     vel_data[8] = ((int16_t)(yaw*1000)>>8) & 0xff;
     vel_data[9] = ((int16_t)(yaw*1000)) & 0xff;
     check_sum(vel_data,10,vel_data[10]);
     boost::asio::write(*sp_.get(),boost::asio::buffer(vel_data,11),ec_);
+    ROS_INFO("Sent Down!,x=%.3f,y=%.3f,z=%.3f",x,y,yaw);
 }
 /*
     主线程：在完成了子线程的创建和相关的IO的初始化后就会进行等待
